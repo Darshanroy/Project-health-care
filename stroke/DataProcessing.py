@@ -17,7 +17,7 @@ def preprocess_data(df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame, pd.Se
     df['gender'] = df['gender'].map(gender_dict)
     df['ever_married'] = df['ever_married'].map(ever_married_dict)
     df['work_type'] = df['work_type'].map(work_type_dict)
-    df['Residence_type'] = df['Residence_type'].map(Residence_type_dict)
+    df['residence_type'] = df['Residence_type'].map(Residence_type_dict)
     df['smoking_status'] = df['smoking_status'].map(smoking_status_dict)
 
     # Fill missing values in the 'bmi' column with the mean value of the column

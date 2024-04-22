@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stroke Prediction Result</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8 text-center">
+        <h1 class="text-primary">Stroke Prediction Result</h1>
+        {% if prediction == 1 %}
+          <h2 class="text-danger">Stroke</h2>
+        {% else %}
+          <h2 class="text-success">No Stroke</h2>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</body>
+</html>
