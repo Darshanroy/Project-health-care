@@ -3,6 +3,7 @@ import pandas as pd
 from zenml.steps import step, Output
 from typing import Tuple
 
+
 @step
 def preprocess_data(df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series]:
     # Define dictionaries to map categorical values to numerical representations

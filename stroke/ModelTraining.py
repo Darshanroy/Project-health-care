@@ -1,5 +1,7 @@
-from typing import Optional
-
+import mlflow
+from mlflow.models import infer_signature
+import numpy as np
+from sklearn.linear_model import LogisticRegression
 import pandas as pd
 from sklearn.base import ClassifierMixin
 from sklearn.ensemble import RandomForestClassifier
@@ -8,7 +10,6 @@ from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from typing_extensions import Annotated
-
 from zenml import ArtifactConfig, step
 from zenml.logger import get_logger
 import pickle
@@ -71,5 +72,12 @@ def model_trainer(
     # Pickle the trained model
     with open(model_file_path, "wb") as f:
         pickle.dump(model, f)
+
+    # MLflow integration
+    with mlflow.start_run():
+        signature = infer_signature(X_train, model.predict(X_train))
+        mlflow.sklearn.log_model(
+            sk_model=model, artifact_path="model", signature=signature
+        )
 
     return model
